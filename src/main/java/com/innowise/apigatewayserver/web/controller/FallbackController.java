@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FallbackController {
 
-    @GetMapping("/user-service-fallback")
-    public ResponseEntity<FallbackDto> userServiceCommonCircuitBreaker() {
+    @GetMapping("/client-service-fallback")
+    public ResponseEntity<FallbackDto> clientServiceCircuitBreaker() {
         log.info("User service is down");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
                 .fallbackMessage("Client service is not available, please try again later")
@@ -22,7 +22,7 @@ public class FallbackController {
     }
 
     @GetMapping("/notification-service-fallback")
-    public ResponseEntity<FallbackDto> notificationServiceCommonCircuitBreaker() {
+    public ResponseEntity<FallbackDto> notificationServiceCircuitBreaker() {
         log.info("Notification service is down");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
                 .fallbackMessage("Notification service is not available, please try again later")
@@ -30,7 +30,7 @@ public class FallbackController {
     }
 
     @GetMapping("/audit-service-fallback")
-    public ResponseEntity<FallbackDto> auditServiceCommonCircuitBreaker() {
+    public ResponseEntity<FallbackDto> auditServiceCircuitBreaker() {
         log.info("Audit service is down");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
                 .fallbackMessage("Audit service is not available, please try again later")
