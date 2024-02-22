@@ -21,6 +21,30 @@ public class FallbackController {
                 .build());
     }
 
+    @GetMapping("/car-service-fallback")
+    public ResponseEntity<FallbackDto> carServiceCircuitBreaker() {
+        log.info("Car service is down");
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
+                .fallbackMessage("Car service is not available, please try again later")
+                .build());
+    }
+
+    @GetMapping("/rent-service-fallback")
+    public ResponseEntity<FallbackDto> rentServiceCircuitBreaker() {
+        log.info("Rent service is down");
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
+                .fallbackMessage("Rent service is not available, please try again later")
+                .build());
+    }
+
+    @GetMapping("/payment-service-fallback")
+    public ResponseEntity<FallbackDto> paymentServiceCircuitBreaker() {
+        log.info("Payment service is down");
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(FallbackDto.builder()
+                .fallbackMessage("Payment service is not available, please try again later")
+                .build());
+    }
+
     @GetMapping("/notification-service-fallback")
     public ResponseEntity<FallbackDto> notificationServiceCircuitBreaker() {
         log.info("Notification service is down");
